@@ -1,0 +1,114 @@
+HI VARNA DEPLOYMENT CHECKLIST
+==============================
+
+PRE-DEPLOYMENT
+--------------
+[ ] Read DEPLOYMENT.md for detailed instructions
+[ ] Read QUICK_START.txt for command reference
+[ ] Have GitHub account ready
+[ ] Know your GitHub username
+
+GITHUB SETUP
+------------
+[ ] Create new repository on GitHub
+[ ] Name: hi-varna (or your choice)
+[ ] Visibility: Public
+[ ] Do NOT initialize with README
+
+LOCAL GIT SETUP
+---------------
+[ ] Open terminal/command prompt
+[ ] Navigate to: /mnt/user-data/outputs/hi-varna-site
+[ ] Run: git init
+[ ] Configure git username: git config user.name "Your Name"
+[ ] Configure git email: git config user.email "your@email.com"
+[ ] Add files: git add .
+[ ] Commit: git commit -m "Initial commit"
+
+CONNECT TO GITHUB
+-----------------
+[ ] Add remote (update YOUR-USERNAME):
+    git remote add origin https://github.com/YOUR-USERNAME/hi-varna.git
+[ ] Rename branch: git branch -M main
+[ ] Create Personal Access Token at: https://github.com/settings/tokens
+    - Token name: Hi Varna Deployment
+    - Scope: repo ✓
+    - Copy token somewhere safe
+[ ] Push to GitHub: git push -u origin main
+[ ] Use token as password when prompted
+
+ENABLE GITHUB PAGES
+-------------------
+[ ] Go to repository on GitHub
+[ ] Settings → Pages
+[ ] Source: main branch
+[ ] Folder: / (root)
+[ ] Save
+[ ] Wait 1-2 minutes
+[ ] Visit: https://YOUR-USERNAME.github.io/hi-varna/
+[ ] Verify site is live
+
+FORMSPREE SETUP
+---------------
+[ ] Go to https://formspree.io
+[ ] Sign up / Log in
+[ ] Create new form: "Hi Varna Contact Form"
+[ ] Copy form endpoint: https://formspree.io/f/YOUR_FORM_ID
+[ ] Edit index.html (on GitHub or locally):
+    - Find: action="https://formspree.io/f/YOUR_FORM_ID"
+    - Replace YOUR_FORM_ID with actual ID
+[ ] Commit changes
+[ ] Wait 1-2 minutes for deployment
+[ ] Test contact form on live site
+[ ] Check email for test submission
+
+CONTENT UPDATES
+---------------
+[ ] Update phone number in index.html
+[ ] Update email address if different
+[ ] Add social media links (replace all #)
+[ ] Add logo image:
+    - Create images/ folder
+    - Upload logo file
+    - Update HTML to reference it
+[ ] Test all links work
+
+OPTIONAL ENHANCEMENTS
+--------------------
+[ ] Set up custom domain (hivarna.com)
+[ ] Configure DNS records
+[ ] Add CNAME file
+[ ] Enable HTTPS in GitHub Pages
+[ ] Set up Google Analytics
+[ ] Submit to Google Search Console
+[ ] Create social media accounts
+[ ] Design business cards with QR code to site
+[ ] Create email signature with website link
+
+POST-LAUNCH
+-----------
+[ ] Share website URL with partner
+[ ] Test on mobile devices
+[ ] Test on different browsers
+[ ] Share on social media
+[ ] Add to email signature
+[ ] Monitor Formspree for submissions
+[ ] Gather feedback from users
+[ ] Make improvements based on feedback
+
+NOTES:
+------
+- GitHub Pages deployment takes 1-2 minutes after each push
+- Clear browser cache (Ctrl+F5) if changes don't appear
+- Check Settings → Pages for deployment status
+- Formspree free plan: 50 submissions/month
+- Personal Access Token: Keep it secure, treat like password
+
+TROUBLESHOOTING:
+----------------
+- 404 Error: Check file is named index.html
+- Form not working: Verify Formspree ID is correct
+- Images not loading: Check file paths are relative
+- Site not updating: Wait a bit, clear cache, check GitHub Actions
+
+Good luck! 🚀

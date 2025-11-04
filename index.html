@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Varna! - Your First Friend in Varna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3B82F6;
+            --primary-orange: #F59E0B;
+            --dark-blue: #1E3A8A;
+            --light-blue: #EFF6FF;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .cta-button {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-orange);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn-primary {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light-blue);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Why Varna Section */
+        .why-varna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-blue);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-orange);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-card li {
+            color: var(--text-light);
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        /* How It Works Section */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--light-blue);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary-orange);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-info h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item strong {
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--dark-blue);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .submit-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Hi Varna</span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#why-varna">Why Varna</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact" class="cta-button">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your journey to <span class="highlight">Varna, BG</span> starts here!</h1>
+            <p>We help international students navigate their educational journey in beautiful Varna, Bulgaria. From university applications to settling in your new home.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Get Started Today</a>
+                <a href="#services" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your First Friend in Varna</h2>
+            </div>
+            <div class="about-content">
+                <p>Starting your studies in a new country can be overwhelming. Hi Varna! makes your transition smooth, affordable, and stress-free. We provide personalized support for international students - from the moment you decide to study in Varna until you feel completely at home.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Varna Section -->
+    <section id="why-varna">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Varna?</h2>
+                <p>Varna, Bulgaria's maritime capital, offers the perfect blend of academic excellence, cultural richness, and affordable living.</p>
+            </div>
+            <div class="why-varna-grid">
+                <div class="benefit-card">
+                    <h3>🎓 World-Class Education</h3>
+                    <p>Top-ranked universities with international recognition including Medical University, Technical University, and Naval Academy</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💰 Affordable Living</h3>
+                    <p>Significantly lower cost of living compared to Western Europe, making it ideal for students</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🌊 Rich Culture</h3>
+                    <p>Stunning Black Sea coastline, vibrant nightlife, and rich cultural heritage</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🚀 Career Gateway</h3>
+                    <p>Strategic location providing access to European career opportunities and a growing tech industry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive support for your educational journey in Varna, Bulgaria</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>University Applications</h3>
+                    <ul>
+                        <li>Complete application guidance</li>
+                        <li>Document preparation and submission</li>
+                        <li>Enrollment support</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Accommodation Support</h3>
+                    <ul>
+                        <li>Verified student housing database</li>
+                        <li>Contract review and negotiation</li>
+                        <li>Neighborhood tours</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Visa & Documentation</h3>
+                    <ul>
+                        <li>Visa requirement guidance</li>
+                        <li>Residence permit applications</li>
+                        <li>Translation and notarization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Airport & Arrival</h3>
+                    <ul>
+                        <li>Reliable airport pickup</li>
+                        <li>Welcome package</li>
+                        <li>First-day city orientation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Essential Setup</h3>
+                    <ul>
+                        <li>Bank account opening</li>
+                        <li>Mobile phone and SIM card</li>
+                        <li>Health insurance guidance</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Cultural Integration</h3>
+                    <ul>
+                        <li>Connect with local communities</li>
+                        <li>City tours and cultural activities</li>
+                        <li>Social events and networking</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Language Support</h3>
+                    <ul>
+                        <li>Bulgarian language courses</li>
+                        <li>English academic writing support</li>
+                        <li>Translation services</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Career Guidance</h3>
+                    <ul>
+                        <li>Internship opportunities</li>
+                        <li>Job placement assistance</li>
+                        <li>Professional networking</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Ongoing Support</h3>
+                    <ul>
+                        <li>Emergency assistance 24/7</li>
+                        <li>Chat and phone support</li>
+                        <li>Monthly community events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Getting Started is Easy</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Contact Us</h3>
+                    <p>Reach out via our website or social media. Tell us when you're arriving and what you need.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Choose Your Package</h3>
+                    <p>Select from our starter packs or customize services based on your needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>We Handle Everything</h3>
+                    <p>From airport pickup to getting your residence permit, we're with you every step.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Settle In & Thrive</h3>
+                    <p>Focus on your studies while we ensure you have everything you need to feel at home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transparent, Student-Friendly Pricing</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter Pack</h3>
+                    <div class="price">€150-200</div>
+                    <ul>
+                        <li>Airport pickup</li>
+                        <li>Accommodation help</li>
+                        <li>First-week essentials</li>
+                        <li>SIM card setup</li>
+                        <li>City orientation</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Full Settlement</h3>
+                    <div class="price">€350-450</div>
+                    <ul>
+                        <li>Everything in Starter Pack</li>
+                        <li>Visa support</li>
+                        <li>Bank account opening</li>
+                        <li>Residence permit assistance</li>
+                        <li>Health insurance setup</li>
+                        <li>Document translation</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Ongoing Support</h3>
+                    <div class="price">€20<span style="font-size: 1rem;">/month</span></div>
+                    <ul>
+                        <li>Monthly community events</li>
+                        <li>24/7 chat support</li>
+                        <li>Emergency assistance</li>
+                        <li>Student community access</li>
+                        <li>Career guidance</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+                Custom packages available. Contact us for personalized pricing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your journey? Contact us today for a free consultation</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <strong>📧 Email</strong>
+                        info@hivarna.com
+                    </div>
+                    <div class="info-item">
+                        <strong>📱 Phone</strong>
+                        +359 XXX XXX XXX
+                    </div>
+                    <div class="info-item">
+                        <strong>📍 Office</strong>
+                        Varna, Bulgaria
+                    </div>
+                    <div class="info-item">
+                        <strong>🕐 Business Hours</strong>
+                        Mon-Fri: 9:00-18:00
+                    </div>
+                    <div class="social-links">
+                        <a href="#" title="Instagram">IG</a>
+                        <a href="#" title="TikTok">TT</a>
+                        <a href="#" title="Facebook">FB</a>
+                        <a href="#" title="YouTube">YT</a>
+                    </div>
+                </div>
+                <!-- 
+                    TO ACTIVATE FORMSPREE:
+                    1. Sign up at https://formspree.io (free)
+                    2. Create a new form and get your form endpoint
+                    3. Replace "YOUR_FORM_ID" below with your actual form ID
+                    Example: https://formspree.io/f/mwpezzzz
+                -->
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone (optional)</label>
+                        <input type="tel" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Expected Arrival Date</label>
+                        <input type="date" name="arrival_date">
+                    </div>
+                    <div class="form-group">
+                        <label>Services Interested In</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="services[]" value="Airport Pickup"> Airport Pickup</label>
+                            <label><input type="checkbox" name="services[]" value="Accommodation"> Accommodation</label>
+                            <label><input type="checkbox" name="services[]" value="Visa Support"> Visa Support</label>
+                            <label><input type="checkbox" name="services[]" value="Bank & SIM"> Bank & SIM</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea name="message" required></textarea>
+                    </div>
+                    <!-- Honeypot field for spam protection (hidden from users) -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hi Varna</h3>
+                <p>Your First Friend in Varna. Making international students feel at home since 2025.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">University Applications</a></li>
+                    <li><a href="#services">Accommodation</a></li>
+                    <li><a href="#services">Visa & Documentation</a></li>
+                    <li><a href="#services">Career Guidance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hi Varna! - Your First Friend in Varna. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .service-card, .step, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

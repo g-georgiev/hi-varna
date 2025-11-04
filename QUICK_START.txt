@@ -1,0 +1,64 @@
+QUICK START - Copy and paste these commands
+================================================
+
+STEP 1: Navigate to the project folder
+---------------------------------------
+cd /mnt/user-data/outputs/hi-varna-site
+
+
+STEP 2: Initialize and configure git
+-------------------------------------
+git init
+git config user.name "Your Name Here"
+git config user.email "your.email@example.com"
+
+
+STEP 3: Commit your files
+--------------------------
+git add .
+git commit -m "Initial commit - Hi Varna website"
+
+
+STEP 4: Connect to GitHub
+--------------------------
+# Replace YOUR-USERNAME with your GitHub username
+# Replace hi-varna if you named your repo differently
+
+git remote add origin https://github.com/YOUR-USERNAME/hi-varna.git
+git branch -M main
+
+
+STEP 5: Push to GitHub
+----------------------
+git push -u origin main
+
+# When prompted for password, use a Personal Access Token:
+# Create at: https://github.com/settings/tokens
+# Scope: repo (check the box)
+
+
+STEP 6: Enable GitHub Pages
+----------------------------
+1. Go to: https://github.com/YOUR-USERNAME/hi-varna
+2. Click "Settings" tab
+3. Click "Pages" in sidebar
+4. Source: main branch, / (root) folder
+5. Save
+
+Your site will be live at:
+https://YOUR-USERNAME.github.io/hi-varna/
+
+
+STEP 7: Set up Formspree
+-------------------------
+1. Go to: https://formspree.io
+2. Sign up / Log in
+3. Create new form
+4. Copy your form ID (e.g., mwpezzzz)
+5. Edit index.html on GitHub
+6. Replace YOUR_FORM_ID with your actual ID
+7. Commit changes
+
+Done! 🎉
+
+For detailed instructions, see DEPLOYMENT.md
